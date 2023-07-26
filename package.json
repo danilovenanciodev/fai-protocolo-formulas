@@ -1,0 +1,21 @@
+{
+  "name": "fai-temp-api",
+  "version": "1.0.0",
+  "description": "Temporário",
+  "main": "index.js",
+  "scripts": {
+    "start": "ts-node ./src/index.ts",
+    "build": "npx tsc"
+  },
+  "keywords": [],
+  "author": "bautistaj",
+  "license": "ISC",
+  "dependencies": {
+  },
+  "devDependencies": {
+    "@types/node": "^20.2.3",
+    "nodemon": "^2.0.22",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.0.4"
+  }
+}
