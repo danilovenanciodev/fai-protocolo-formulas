@@ -1,3 +1,4 @@
+import { UmRmService } from "./services/1rm.service"
 import { DobraCutaneaService } from "./services/dobra-cutanea.service"
 import { RcqService } from "./services/rcq.service"
 import { TesteAbdominal, TesteAbdominalService } from "./services/teste-abdominal.service"
@@ -154,4 +155,22 @@ console.log('=======================================================')
 console.log('                       VO2 MAX                         ')
 console.log('=======================================================')
 console.log(vo2max)
+console.log('-------------------------------------------')
+
+//=======================================================
+//                   1RM
+//=======================================================
+const umRmService = new UmRmService()
+const carga = 80
+const repeticao = 10
+
+const umRm = umRmService.umRm({
+    carga,
+    repeticao,
+})
+
+console.log('=======================================================')
+console.log('                       1RM                       ')
+console.log('=======================================================')
+console.log(umRm)
 console.log('-------------------------------------------')
