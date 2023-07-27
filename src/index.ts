@@ -1,3 +1,4 @@
+import { UmRmService } from "./services/1rm.service"
 import { BancoWellsService } from "./services/banco-wells.service"
 import { DobraCutaneaService } from "./services/dobra-cutanea.service"
 import { FlexitesteService } from "./services/flexiteste.service"
@@ -205,4 +206,22 @@ console.log('=======================================================')
 console.log('                       BANCO DE WELLS                  ')
 console.log('=======================================================')
 console.log(bancoWells)
+
+
+//=======================================================
+//                   1RM
+//=======================================================
+const umRmService = new UmRmService()
+const carga = 80
+const repeticao = 10
+
+const umRm = umRmService.umRm({
+    carga,
+    repeticao,
+})
+
+console.log('=======================================================')
+console.log('                       1RM                       ')
+console.log('=======================================================')
+console.log(umRm)
 console.log('-------------------------------------------')
