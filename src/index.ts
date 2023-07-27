@@ -1,4 +1,6 @@
+import { BancoWellsService } from "./services/banco-wells.service"
 import { DobraCutaneaService } from "./services/dobra-cutanea.service"
+import { FlexitesteService } from "./services/flexiteste.service"
 import { RcqService } from "./services/rcq.service"
 import { TesteAbdominal, TesteAbdominalService } from "./services/teste-abdominal.service"
 import { TesteFlexaoBraco } from "./services/teste-flexao-braco.service"
@@ -154,4 +156,53 @@ console.log('=======================================================')
 console.log('                       VO2 MAX                         ')
 console.log('=======================================================')
 console.log(vo2max)
+console.log('-------------------------------------------')
+
+
+//=======================================================
+//                   FLEXITESTE
+//=======================================================
+const flexitesteService = new FlexitesteService()
+    const flexaoQuadril = 2
+    const extensaoQuadril = 3
+    const abducaoQuadril = 1
+    const flexaoTronco = 4
+    const flexaoLateralTronco = 3
+    const extensaoAducaoOmbro = 2
+    const aducao180Ombro = 4
+    const extensaoPosteriorOmbro = 2
+
+const flexiteste = flexitesteService.flexiteste({
+    flexaoQuadril,
+    extensaoQuadril,
+    abducaoQuadril,
+    flexaoTronco,
+    flexaoLateralTronco,
+    extensaoAducaoOmbro,
+    aducao180Ombro,
+    extensaoPosteriorOmbro
+})
+
+console.log('=======================================================')
+console.log('                       FLEXITESTE                         ')
+console.log('=======================================================')
+console.log(flexiteste)
+console.log('-------------------------------------------')
+
+//=======================================================
+//                   BANCO DE WELLS
+//=======================================================
+const bancoWellsService = new BancoWellsService()
+const distanciaBancoWells = 50
+
+const bancoWells = bancoWellsService.bancoWells({
+    distancia:distanciaBancoWells,
+    idade,
+    sexo
+})
+
+console.log('=======================================================')
+console.log('                       BANCO DE WELLS                  ')
+console.log('=======================================================')
+console.log(bancoWells)
 console.log('-------------------------------------------')
