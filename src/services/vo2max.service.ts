@@ -4,15 +4,34 @@ export interface Vo2MaxReq{
     sexo: 'MASCULINO' | 'FEMININO'
 }
 
+export interface Vo2MaxTeste2400MetrosReq{
+    tempo: number
+}
+
 export class Vo2MaxService{
+    public teste2400metros(data: Vo2MaxTeste2400MetrosReq){
+        let vo2max = 0
+        let tempo = data.tempo
+
+        vo2max = ((2400 * 60 * 0.2) + 3.5) / tempo
+    }
+
+    public testeCaminhada1600metros(){
+        let vo2max = 0
+    }
+
+    public testeCooper12Minutos(){
+        let vo2max = 0
+    }
+
     public vo2max(data: Vo2MaxReq){
-        let rcq = 0
+        let vo2max = 0
         let classificacao = ''
         let distancia = data.distancia
         let idade =  data.idade
         let sexo = data.sexo
 
-        const vo2max = parseFloat(((distancia - 504.1) / 42.2).toFixed(2))
+        vo2max = parseFloat(((distancia - 504.1) / 42.2).toFixed(2))
         
         classificacao = this.classificacao(vo2max, idade, sexo) || ''
 

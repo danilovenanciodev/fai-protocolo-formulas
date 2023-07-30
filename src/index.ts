@@ -1,4 +1,4 @@
-import { UmRmService } from "./services/1rm.service"
+import { UmRmService } from "./services/um-rm.service"
 import { BancoWellsService } from "./services/banco-wells.service"
 import { DobraCutaneaService } from "./services/dobra-cutanea.service"
 import { FlexitesteService } from "./services/flexiteste.service"
@@ -6,11 +6,54 @@ import { RcqService } from "./services/rcq.service"
 import { TesteAbdominal, TesteAbdominalService } from "./services/teste-abdominal.service"
 import { TesteFlexaoBraco } from "./services/teste-flexao-braco.service"
 import { Vo2MaxService } from "./services/vo2max.service"
+import { ImcService } from "./services/imc.service"
 
 
-const peso = 96.4
+const peso = 58.4
 const sexo = 'FEMININO'
 const idade = 35
+const altura = 1.60
+
+//=======================================================
+//                         IMC
+//=======================================================
+const imcService = new ImcService()
+
+const imcAdulto = imcService.imcAdulto({
+    peso,
+    altura
+})
+
+console.log('=======================================================')
+console.log('                       IMC Adulto                      ')
+console.log('=======================================================')
+console.log(imcAdulto)
+console.log('-------------------------------------------')
+
+const imcIdoso = imcService.imcIdoso({
+    peso,
+    altura
+})
+
+console.log('=======================================================')
+console.log('                       IMC Idoso                      ')
+console.log('=======================================================')
+console.log(imcIdoso)
+console.log('-------------------------------------------')
+
+const semanaGestacional = 30
+
+const imcGestante = imcService.imcGestante({
+    peso,
+    altura,
+    semanaGestacional,
+})
+
+console.log('=======================================================')
+console.log('                       IMC Gestante                      ')
+console.log('=======================================================')
+console.log(imcGestante)
+console.log('-------------------------------------------')
 
 
 //=======================================================
