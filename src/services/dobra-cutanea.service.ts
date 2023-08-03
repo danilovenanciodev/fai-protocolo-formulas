@@ -64,7 +64,7 @@ export class DobraCutaneaService{
 
         percentualGordura = (((triceps + supraIliaca + subescapular + abdominal) * 0.153) + 5.783)
         pesoGordoKg = percentualGordura * peso / 100
-        massaMagraKg = peso - pesoGordoKg
+        massaMagraKg = peso - pesoGordoKg   
         pesoIdealKg = massaMagraKg * pesoIdealConstante[constantePesoIdeal]
         diferencaPeso = peso - pesoIdealKg
 

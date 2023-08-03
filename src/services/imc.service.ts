@@ -23,6 +23,7 @@ export class ImcService{
         let imc: number = parseFloat((peso / (altura * altura)).toFixed(2))
         let pesoIdealMin = parseFloat((18.5 * Math.pow(altura, 2)).toFixed(2))
         let pesoIdealMax = parseFloat((24.99 * Math.pow(altura, 2)).toFixed(2))
+        let pesoIdeal = parseFloat((22 * Math.pow(altura, 2)).toFixed(2))
 
        const classificacao = this.classificacaoAdulto(imc)
 
@@ -32,6 +33,7 @@ export class ImcService{
             altura,
             dataRegistro: dataRegistro,
             classificacao: classificacao,
+            pesoIdeal: pesoIdeal,
             pesoIdealMin: pesoIdealMin,
             pesoIdealMax: pesoIdealMax,
        }
