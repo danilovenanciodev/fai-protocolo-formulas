@@ -3,7 +3,7 @@ import { BancoWellsService } from "./services/banco-wells.service"
 import { DobraCutaneaService } from "./services/dobra-cutanea.service"
 import { FlexitesteService } from "./services/flexiteste.service"
 import { RcqService } from "./services/rcq.service"
-import { TesteAbdominal, TesteAbdominalService } from "./services/teste-abdominal.service"
+import { TesteAbdominalService } from "./services/teste-abdominal.service"
 import { TesteFlexaoBraco } from "./services/teste-flexao-braco.service"
 import { Vo2MaxService } from "./services/vo2max.service"
 import { ImcService } from "./services/imc.service"
@@ -17,11 +17,72 @@ import { ComposicaoCorporalService } from "./services/composicao-corporal.servic
 import { PesoIdealService } from "./services/peso-ideal.service"
 import { PercentualGorduraService } from "./services/percentual-gordura.service"
 
-
-const peso = 94
+//=======================================================
+//                         Variaveis
+//=======================================================
+//                      Dados demográficos
+//-------------------------------------------------------
 const sexo = 'MASCULINO'
 const idade = 36
+
+//-------------------------------------------------------
+//                          Medidas
+//-------------------------------------------------------
+const peso = 94
 const altura = 1.81
+const percentualGordura = 25
+const semanaGestacional = 30
+
+//-------------------------------------------------------
+//                      Dobras cutâneas
+//-------------------------------------------------------
+const triceps = 21 
+const supraIliaca = 36
+const subescapular = 38
+const abdominal = 36
+const axilarMedia = 37
+const coxa = 28
+const peitoral = 19
+
+//-------------------------------------------------------
+//                          Perimetria
+//-------------------------------------------------------
+const cintura = 74
+const quadril = 134
+
+//-------------------------------------------------------
+//                          Testes
+//-------------------------------------------------------
+const testeFlexaoBracoRepeticoes = 40
+const testeAbdominalRepetocoes = 15
+const distanciaVo2Max = 5000
+const distanciaBancoWells = 50
+
+//-------------------------------------------------------
+//                          Flexiteste
+//-------------------------------------------------------
+const flexaoQuadril = 2
+const extensaoQuadril = 3
+const abducaoQuadril = 1
+const flexaoTronco = 4
+const flexaoLateralTronco = 3
+const extensaoAducaoOmbro = 2
+const aducao180Ombro = 4
+const extensaoPosteriorOmbro = 2
+
+//-------------------------------------------------------
+//                          UmRM
+//-------------------------------------------------------
+const cargaUmRm = 80
+const repeticaoUmRm = 10
+
+//-------------------------------------------------------
+//                          Diametros
+//-------------------------------------------------------
+const punho = 55
+const joelho = 98
+const diametroFemur = 0
+const diametroRadioUlnar = 0
 
 //=======================================================
 //                         IMC
@@ -50,8 +111,6 @@ console.log('=======================================================')
 console.log(imcIdoso)
 console.log('-------------------------------------------')
 
-const semanaGestacional = 30
-
 const imcGestante = imcService.imcGestante({
     peso,
     altura,
@@ -69,13 +128,6 @@ console.log('-------------------------------------------')
 //                  DOBRAS CUTÂNEAS
 //=======================================================
 const dobraCutaneaService = new DobraCutaneaService()
-const triceps = 21 
-const supraIliaca = 36
-const subescapular = 38
-const abdominal = 36
-const axilarMedia = 37
-const coxa = 28
-const peitoral = 19
 
 
 // Protocolo de Faulkner, 1968 - 4 Dobras cutâneas: Tríceps; subescapular; supra-ilíaca e abdome
@@ -137,14 +189,13 @@ console.log('-------------------------------------------')
 //                         RCQ
 //=======================================================
 const rcqService = new RcqService()
-const cintura = 74
-const quadril = 134
+
 
 const rcq = rcqService.rcq({
-    cintura: 97.5,
-    quadril: 103,
-    idade: 36,
-    sexo: 'MASCULINO'
+    cintura,
+    quadril,
+    idade,
+    sexo
 })
 
 console.log('=======================================================')
@@ -157,10 +208,9 @@ console.log('-------------------------------------------')
 //                         RCE
 //=======================================================
 const rceService = new RceService()
-const cinturaRce = 74
 
 const rce = rceService.rce({
-    cintura:cinturaRce,
+    cintura,
     altura,
 })
 
@@ -210,8 +260,8 @@ console.log('-------------------------------------------')
 const iacService = new IacService()
 
 const iac = iacService.iac({
-    altura: 1.57,
-    quadril: 78
+    altura,
+    quadril
 })
 
 console.log('=======================================================')
@@ -225,12 +275,12 @@ console.log('-------------------------------------------')
 //                   TESTE FLEXÃO DE BRAÇO
 //=======================================================
 const testeFlexaoBracoService = new TesteFlexaoBraco()
-const repeticoes = 40
+
 
 const testeFlexaoBraco = testeFlexaoBracoService.testeFLexaoBraco({
-    repeticoes,
+    repeticoes:testeFlexaoBracoRepeticoes,
     idade,
-    sexo: 'FEMININO'
+    sexo
 })
 
 console.log('=======================================================')
@@ -244,12 +294,12 @@ console.log('-------------------------------------------')
 //                   TESTE ABDOMINAL
 //=======================================================
 const testeAbdominalService = new TesteAbdominalService()
-const repeticoesAbd = 10
+
 
 const testeAbdominal = testeAbdominalService.testeAbdominalUmMinuto({
-    repeticoes: repeticoesAbd,
+    repeticoes: testeAbdominalRepetocoes,
     idade,
-    sexo: 'FEMININO'
+    sexo
 })
 
 console.log('=======================================================')
@@ -264,12 +314,12 @@ console.log('-------------------------------------------')
 //                   VO2 MAX
 //=======================================================
 const vo2maxService = new Vo2MaxService()
-const distancia = 5000
+
 
 const vo2max = vo2maxService.vo2max({
-    distancia,
+    distancia: distanciaVo2Max,
     idade,
-    sexo: 'FEMININO'
+    sexo
 })
 
 console.log('=======================================================')
@@ -283,14 +333,7 @@ console.log('-------------------------------------------')
 //                   FLEXITESTE
 //=======================================================
 const flexitesteService = new FlexitesteService()
-    const flexaoQuadril = 2
-    const extensaoQuadril = 3
-    const abducaoQuadril = 1
-    const flexaoTronco = 4
-    const flexaoLateralTronco = 3
-    const extensaoAducaoOmbro = 2
-    const aducao180Ombro = 4
-    const extensaoPosteriorOmbro = 2
+    
 
 const flexiteste = flexitesteService.flexiteste({
     flexaoQuadril,
@@ -313,7 +356,7 @@ console.log('-------------------------------------------')
 //                   BANCO DE WELLS
 //=======================================================
 const bancoWellsService = new BancoWellsService()
-const distanciaBancoWells = 50
+
 
 const bancoWells = bancoWellsService.bancoWells({
     distancia:distanciaBancoWells,
@@ -331,12 +374,11 @@ console.log(bancoWells)
 //                   1RM
 //=======================================================
 const umRmService = new UmRmService()
-const carga = 80
-const repeticao = 10
+
 
 const umRm = umRmService.umRm({
-    carga,
-    repeticao,
+    carga: cargaUmRm,
+    repeticao: repeticaoUmRm,
 })
 
 console.log('=======================================================')
@@ -350,8 +392,7 @@ console.log('-------------------------------------------')
 //                   Peso Osseo
 //=======================================================
 const pesoOsseoService = new PesoOsseoService()
-const punho = 55
-const joelho = 98
+
 
 const pesoOsseo = pesoOsseoService.massaOsseo({
     punho,
@@ -372,8 +413,8 @@ const somatotipoService = new SomatotipoService()
 
 
 const somatotipo = somatotipoService.somatotipo({
-    peso: 94,
-    altura: 1.81,
+    peso,
+    altura,
     umero: 60,
     femur: 120,
     panturilha: 13,
@@ -397,12 +438,12 @@ const composicaoCorporalService = new ComposicaoCorporalService()
 
 
 const composicao = composicaoCorporalService.composicaoCorporal({
-    peso: 94,
-    altura: 1.81,
-    percentualGordura: 29,
-    diametroFemur: 120,
-    diametroRadioUlnar: 60,
-    sexo: 'MASCULINO'
+    peso,
+    altura,
+    percentualGordura,
+    diametroFemur,
+    diametroRadioUlnar,
+    sexo
 })
 
 console.log('=======================================================')

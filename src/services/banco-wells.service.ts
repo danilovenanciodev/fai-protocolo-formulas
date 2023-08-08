@@ -1,11 +1,16 @@
-export interface BancoWellsReq{
+export interface BancoWellsRequest{
     distancia: number
     idade: number
     sexo: 'MASCULINO' | 'FEMININO'
 }
 
+export interface BancoWellsResponse{
+    distancia: number
+    classificacao: string
+}
+
 export class BancoWellsService{
-    public bancoWells(data: BancoWellsReq){
+    public bancoWells(data: BancoWellsRequest): BancoWellsResponse{
         let classificacao = ''
         let distancia = data.distancia
         let idade = data.idade
