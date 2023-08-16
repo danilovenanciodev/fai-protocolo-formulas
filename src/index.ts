@@ -28,7 +28,7 @@ const idade = 36
 //-------------------------------------------------------
 //                          Medidas
 //-------------------------------------------------------
-const peso = 94
+const peso = 93.3
 const altura = 1.81
 const percentualGordura = 25
 const semanaGestacional = 30
